@@ -2,11 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Entypo } from '@expo/vector-icons'; 
-import {Montserrat_400Regular, useFonts} from '@expo-google-fonts/montserrat';
+import {Montserrat_400Regular, Montserrat_700Bold, useFonts} from '@expo-google-fonts/montserrat';
 
 export default function App() {
     let [fontsLoaded] = useFonts({
-      Montserrat_400Regular
+      Montserrat_400Regular, 
+      Montserrat_700Bold
     });
 
     if (!fontsLoaded) {
@@ -23,17 +24,27 @@ export default function App() {
           <Entypo name="menu" size={36} color="white"/>
 
           <Image style={styles.minhaFoto} 
-          source={{uri: 'https://img.a.transfermarkt.technology/portrait/header/8198-1685035469.png?lm=1'}}>
+          source={{uri: 'https://pm1.aminoapps.com/6246/42a391a826b782e4b91b14b478ba0d6304db5d90_hq.jpg'}}>
           </Image>
         </View>
 
         <Text style={styles.bemvindo} >Bem Vindo(a), {'\n'} Usuário</Text>
       </LinearGradient>
 
-      <View>
+      <View style={styles.viewMaior}>
         <View style={styles.resumoSaldo}>
-          <Text>Seu saldo total</Text>
-          <Text>R$ 8.500,00</Text>
+          <Text style={{color: '#3A3A3A', fontSize: 20, fontFamily: 'Montserrat_400Regular'}}>Seu saldo total</Text>
+          <Text style={{color: '#348DF6', fontSize: 32, fontFamily: 'Montserrat_700Bold'}}>R$ 8.500,00</Text>
+        </View>
+
+        <View style={styles.verifique}> 
+          <LinearGradient
+            colors={['#2C4ED4', '#493DEB']}
+            style={styles.contaGradient}>
+                <Text style={{fontSize: 18, color: 'white', fontFamily: 'Montserrat_400Regular'}}>
+                  Verifique suas contas Bancarias 
+                </Text>
+          </LinearGradient>
         </View>
       </View>
       </View>
@@ -43,7 +54,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
     alignItems: 'center',
   },
   headerGradient: { //fundo azul
@@ -55,7 +66,9 @@ const styles = StyleSheet.create({
   },
   minhaFoto: {
     width: 70,
-    height: 95,
+    height: 70,
+    borderColor: 'black',
+    borderRadius: 8
   },
   row1: {
     flexDirection: 'row',
@@ -75,6 +88,37 @@ const styles = StyleSheet.create({
     top: -50,
     borderRadius: 40,
     padding: 20, 
-    marginTop: 15
+    marginTop: 15,
+    fontSize: 30,
+    padding: 20,
+    alignItems: 'flex-start',
+
+    //ELEVAÇÃO
+    shadowColor: 'black',
+    shadowOpacity: 0.9,
+    shadowRadius: 8,
+    elevation: 5
+  },
+  viewMaior: {
+    width: '100%',
+    alignItems: 'center'
+  },
+  verifique: {
+    width: '80%',
+    height: '20%',
+  },
+  contaGradient: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 20,
+    padding: 20,
+    padding: 20,
+
+    //elevação
+    shadowColor: 'black',
+    shadowOpacity: 0.9,
+    shadowRadius: 8,
+    elevation: 5
   }
+
 });
